@@ -8,11 +8,7 @@ import { styFlex } from './styles';
 
 const View = () => (
   <div>
-    <Header />
-    <div className={styFlex}>
-      <Showcase />
-      <ProductList />
-    </div>
+    Hello World
   </div>
 );
 export default View;
