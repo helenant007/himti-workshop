@@ -7,7 +7,14 @@ import diamond5 from '../assets/diamond-5.gif';
 import star from '../assets/star.svg';
 import { shopHeaderData } from '../../mockData';
 import { styFlex, styContainerHeader, styHeading } from '../../styles';
-import { styMargin, styOnlineStatus } from './styles';
+import {
+  styButtonGreen,
+  styOnlineStatus,
+  styButtonRadius,
+  styMargin,
+  styPadding,
+  styAlignCenter,
+} from './styles';
 
 const {
   location, followers, isOnline, productRating,
@@ -45,11 +52,11 @@ const Header = () => {
           <div>
             <img width="74px" src={topedLogo} alt="Shop Pic" />
           </div>
-          <div>
-            <div className={styFlex}>
-              <div className={cx(styFlex, styMargin('0 0 0 10px'), styHeading(20))}>
-                Tokopedia Merchandise
-              </div>
+          <div className={styMargin('0 0 0 28px')}>
+            <div
+              className={cx(styFlex, styMargin('0 0 0 10px'), styHeading(20))}
+            >
+              Tokopedia Merchandise
               <div>
                 <img
                   style={{ paddingLeft: '10px' }}
@@ -58,43 +65,65 @@ const Header = () => {
                 />
               </div>
             </div>
-
-            <div className={styFlex} style={{ alignItems: 'center' }}>
-              {isOnline && <span className={styOnlineStatus}>Online</span>}
+            <div className={styFlex}>
+              {isOnline && (
+                <div
+                  className={cx(styOnlineStatus, styMargin('5px 5px 5px 10px'))}
+                >
+                  Online
+                </div>
+              )}
               <div className={styMargin('10px')}>{location}</div>
               <div className={styMargin('10px')}>
                 {followers}
                 Followers
               </div>
             </div>
-
-            <Button
-              className={styMargin('10px')}
-              style={{ backgroundColor: 'green' }}
-              type="primary"
-              loading={loadingFollow}
-              onClick={handleLoadingFollow}
-            >
-              Follow
-            </Button>
-            <Button
-              className={styMargin('10px')}
-              type="primary"
-              loading={loadingChat}
-              onClick={handleLoadingChat}
-            >
-              Chat Penjual
-            </Button>
-            <Button className={styMargin('10px')} onClick={() => setIsModalVisible(true)}>Info Toko</Button>
+            <div className={styFlex}>
+              <Button
+                className={cx(
+                  styButtonGreen,
+                  styMargin('10px'),
+                  styButtonRadius,
+                )}
+                type="primary"
+                loading={loadingFollow}
+                onClick={handleLoadingFollow}
+              >
+                Follow
+              </Button>
+              <Button
+                className={cx(
+                  styButtonGreen,
+                  styMargin('10px'),
+                  styButtonRadius,
+                )}
+                type="primary"
+                loading={loadingChat}
+                onClick={handleLoadingChat}
+              >
+                Chat Penjual
+              </Button>
+              <Button
+                className={cx(styMargin('10px'), styButtonRadius)}
+                onClick={() => setIsModalVisible(true)}
+              >
+                Info Toko
+              </Button>
+            </div>
           </div>
         </div>
-        <div>
-          <div>Nilai Kualitas Produk</div>
-          <div>{productRating}</div>
-          <div>
-            {Array.from(Array(Math.ceil(productRating))).map(() => (
-              <img width="20px" src={star} alt="Star" />
-            ))}
+        <div className={cx(styFlex, styMargin('0 0 0 20px'))}>
+          <div className={styMargin('0 0 0 20px')}>
+            <div>Nilai Kualitas Produk</div>
+            <div className={cx(styFlex, styAlignCenter)}>
+              <div className={styHeading(20)}>{productRating}</div>
+              <div className={styPadding('0 0 3px 10px')}>
+                {Array.from(Array(5)).map(() => (
+                  <img width="20px" src={star} alt="Star" />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

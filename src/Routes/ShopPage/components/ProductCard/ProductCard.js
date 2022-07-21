@@ -1,5 +1,10 @@
 import React from 'react';
+
 import star from '../assets/star.svg';
+import {
+  styCardShadow, styImgRadius, styCardInfo, styHidden,
+} from './styles';
+import { styFlex } from '../../styles';
 
 const ProductCard = ({ data }) => {
   const {
@@ -7,16 +12,20 @@ const ProductCard = ({ data }) => {
   } = data;
 
   return (
-    <div>
-      <img src={img} alt={title} />
-      <div>
+    <div className={styCardShadow}>
+      <img className={styImgRadius} src={img} alt={title} />
+      <div className={styCardInfo}>
         <div>{title}</div>
         <div>{price}</div>
-        <div>
+        <div className={styFlex}>
           <div>
-            {Array.from(rating).map(() => <img src={star} />)}
+            {
+            Array.from(Array(rating)).map(() => (
+              <img src={star} />
+            ))
+}
           </div>
-          <div>
+          <div className={reviews === 0 && styHidden}>
             (
             {reviews}
             )
