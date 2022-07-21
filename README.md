@@ -1,6 +1,14 @@
 # HIMTI Workshop by Helena N
 
-TokoApp is mock of Shop Page, inspired by Tokopedia's Shop Page design. The branch master contains the starter-kit of this app, and branch final will have the final result of this project.
+TokoApp is mock of Shop Page, inspired by Tokopedia's Shop Page design. The branch master contains the starter-kit of this app, and branch final-result will have the final result of this project.
+
+## How to run
+1. Please install node.js in your computer
+2. Clone the git repo or download zip the repo
+3. Open the repo in VS Code, then open terminal in VS Code
+4. Run `npm install` to install the packages that we use
+5. Run `npm start` and you will see the FE served in localhost:3000
+
 
 HIMTI Workshop, Easy Website Making with Expert © Helena Natanael, 2022
 
