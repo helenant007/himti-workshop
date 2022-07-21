@@ -1,4 +1,5 @@
 import React from 'react';
+import star from '../assets/star.svg';
 
 const ProductCard = ({ data }) => {
   const {
@@ -13,7 +14,7 @@ const ProductCard = ({ data }) => {
         <div>{price}</div>
         <div>
           <div>
-            {rating}
+            {Array.from(rating).map(() => <img src={star} />)}
           </div>
           <div>
             (

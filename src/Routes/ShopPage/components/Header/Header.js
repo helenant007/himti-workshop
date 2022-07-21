@@ -7,7 +7,7 @@ import diamond5 from '../assets/diamond-5.gif';
 import star from '../assets/star.svg';
 import { shopHeaderData } from '../../mockData';
 import { styFlex, styContainerHeader, styHeading } from '../../styles';
-import { styMargin } from './styles';
+import { styMargin, styOnlineStatus } from './styles';
 
 const {
   location, followers, isOnline, productRating,
@@ -18,9 +18,15 @@ const Header = () => {
   const [loadingChat, setLoadingChat] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const handleLoadingFollow = () => {};
+  const handleLoadingFollow = () => {
+    setLoadingFollow(true);
+    setTimeout(() => setLoadingFollow(false), 3000);
+  };
 
-  const handleLoadingChat = () => {};
+  const handleLoadingChat = () => {
+    setLoadingChat(true);
+    setTimeout(() => setLoadingChat(false), 3000);
+  };
 
   const exampleModal = () => (
     <Modal
@@ -35,44 +41,52 @@ const Header = () => {
   return (
     <>
       <div className={cx(styFlex, styContainerHeader)}>
-        <div>
+        <div className={styFlex}>
           <div>
             <img width="74px" src={topedLogo} alt="Shop Pic" />
           </div>
-          <div className={cx(styFlex, styMargin('0 0 0 10px'), styHeading(20))}>
-            Tokopedia Merchandise
-          </div>
           <div>
-            <img
-              style={{ paddingLeft: '10px' }}
-              src={diamond5}
-              alt="Shop Reputation"
-            />
+            <div className={styFlex}>
+              <div className={cx(styFlex, styMargin('0 0 0 10px'), styHeading(20))}>
+                Tokopedia Merchandise
+              </div>
+              <div>
+                <img
+                  style={{ paddingLeft: '10px' }}
+                  src={diamond5}
+                  alt="Shop Reputation"
+                />
+              </div>
+            </div>
+
+            <div className={styFlex} style={{ alignItems: 'center' }}>
+              {isOnline && <span className={styOnlineStatus}>Online</span>}
+              <div className={styMargin('10px')}>{location}</div>
+              <div className={styMargin('10px')}>
+                {followers}
+                Followers
+              </div>
+            </div>
+
+            <Button
+              className={styMargin('10px')}
+              style={{ backgroundColor: 'green' }}
+              type="primary"
+              loading={loadingFollow}
+              onClick={handleLoadingFollow}
+            >
+              Follow
+            </Button>
+            <Button
+              className={styMargin('10px')}
+              type="primary"
+              loading={loadingChat}
+              onClick={handleLoadingChat}
+            >
+              Chat Penjual
+            </Button>
+            <Button className={styMargin('10px')} onClick={() => setIsModalVisible(true)}>Info Toko</Button>
           </div>
-          {isOnline && <div>Online</div>}
-          <div className={styMargin('10px')}>{location}</div>
-          <div className={styMargin('10px')}>
-            {followers}
-            Followers
-          </div>
-          <Button
-            className={styMargin('10px')}
-            type="primary"
-            loading={loadingFollow}
-            onClick={handleLoadingFollow}
-          >
-            Follow
-          </Button>
-          <Button
-            className={styMargin('10px')}
-            type="primary"
-            loading={loadingChat}
-            onClick={handleLoadingChat}
-          >
-            {' '}
-            Chat Penjual
-          </Button>
-          <Button className={styMargin('10px')}>Info Toko</Button>
         </div>
         <div>
           <div>Nilai Kualitas Produk</div>
