@@ -3,27 +3,21 @@ import HeaderShop from './components/Header';
 import ProductList from './components/ProductList';
 import Showcase from './components/Showcase';
 
-// npm install
-// npm start / yarn start
-
 import 'antd/dist/antd.css';
 import { styFlex } from './styles';
+import HeaderTokopedia from './components/HeaderTokopedia';
 
 const View = () => (
   <div>
     <div>
-      Header Tokopedia
+      <HeaderTokopedia />
     </div>
     <div>
       <HeaderShop />
     </div>
     <div className={styFlex}>
-      <div>
-        <Showcase />
-      </div>
-      <div>
-        <ProductList />
-      </div>
+      <Showcase />
+      <ProductList />
     </div>
   </div>
 );
